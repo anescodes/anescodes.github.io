@@ -1,3 +1,7 @@
+// src/data/portfolioData.js
+import chartItImg from '../assets/project2.png';
+import chartItImg2 from '../assets/project22.png';
+import cooja from '../assets/cooja.webp';
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
   title: "Software Engineer & AI/Distributed Systems Master's Student",
@@ -24,13 +28,10 @@ export const projects = [
     tags: ["React", "Node.js", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript"],
     github: "https://github.com/anescodes/chart-it",
     live: "#",
-  },
-  {
-    title: "StorePilot",
-    description: "Robust backend system for inventory and order management with JWT auth and bcrypt security.",
-    tags: ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "REST API"],
-    github: "https://github.com/anescodes/storepilot",
-    live: "#",
+    images: [
+      chartItImg,
+      chartItImg2
+    ]
   },
   {
     title: "Cloud & Fog MABE System",
@@ -38,5 +39,8 @@ export const projects = [
     tags: ["Distributed Systems", "Cryptography", "Cloud", "Fog Computing"],
     github: "https://github.com/anescodes",
     live: "#",
+    images: [
+      cooja
+    ]
   },
 ];

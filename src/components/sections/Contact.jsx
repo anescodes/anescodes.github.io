@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, MapPin } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import { personalInfo } from '../../data/portfolioData';
 
 const Contact = () => {
@@ -10,7 +9,6 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')
     setSent(true);
   };
 
@@ -22,25 +20,25 @@ const Contact = () => {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-bold text-slate-100 mb-3">Get In Touch</h2>
-        <p className="text-slate-400 text-sm">Have a project or remote opportunity? Drop a message!</p>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3 transition-colors">Get In Touch</h2>
+        <p className="text-slate-600 dark:text-slate-400 text-sm transition-colors">Have a project or collaboration idea? Drop a message!</p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-10 bg-slate-900/40 border border-slate-800 rounded-2xl p-8">
+      <div className="grid md:grid-cols-2 gap-10 bg-white/80 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-xl transition-colors">
         <div className="flex flex-col justify-between">
           <div>
-            <h3 className="text-xl font-semibold text-slate-200 mb-4">Let's Connect</h3>
-            <p className="text-slate-400 text-xs leading-relaxed mb-8">
-              I am open to part-time software development roles, contract work, or technical discussions.
+            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4 transition-colors">Let's Connect</h3>
+            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-8 transition-colors">
+              I am open to software development projects, technical discussions, and professional opportunities.
             </p>
           </div>
-          <div className="space-y-4 text-xs text-slate-300">
+          <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
             <div className="flex items-center gap-3">
-              <Mail size={16} className="text-cyan-400" />
+              <Mail size={16} className="text-cyan-500 dark:text-cyan-400" />
               <span>{personalInfo.email}</span>
             </div>
             <div className="flex items-center gap-3">
-              <MapPin size={16} className="text-cyan-400" />
+              <MapPin size={16} className="text-cyan-500 dark:text-cyan-400" />
               <span>{personalInfo.location}</span>
             </div>
           </div>
@@ -52,25 +50,25 @@ const Contact = () => {
             name="user_name" 
             placeholder="Your Name" 
             required 
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
           />
           <input 
             type="email" 
             name="user_email" 
             placeholder="Your Email" 
             required 
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
           />
           <textarea 
             name="message" 
             rows="4" 
             placeholder="Your Message" 
             required 
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors"
           />
           <button 
             type="submit" 
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold p-3 rounded-lg text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/10"
+            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white dark:text-slate-950 font-semibold p-3 rounded-lg text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/10 hover:scale-[1.02] active:scale-95 cursor-pointer"
           >
             {sent ? "Message Sent!" : <><Send size={14} /> Send Message</>}
           </button>
