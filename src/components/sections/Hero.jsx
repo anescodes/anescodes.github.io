@@ -11,7 +11,6 @@ const Hero = () => {
     return (
         <section id="hero" className="min-h-[88vh] flex items-center justify-center px-6 relative overflow-hidden py-12 transition-colors duration-500">
             
-            {/* Dynamic Sea Waves Glow Effect */}
             <motion.div
                 animate={{
                     scale: [1, 1.25, 1],
@@ -30,7 +29,6 @@ const Hero = () => {
                 }`}
             />
 
-            {/* Grid Pattern */}
             <div className={`absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none ${
                 theme === 'dark' ? 'opacity-30' : 'opacity-40'
             }`} />

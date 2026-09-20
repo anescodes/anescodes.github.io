@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// 1. تحديد أنواع البيانات للـ Context
 interface ThemeContextType {
   theme: string;
   toggleTheme: () => void;
@@ -11,7 +10,6 @@ const ThemeContext = createContext<ThemeContextType>({
   toggleTheme: () => {},
 });
 
-// 2. تحديد نوع الـ children هنا لمنع خطأ implicit 'any'
 interface ThemeProviderProps {
   children: ReactNode;
 }

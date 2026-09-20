@@ -53,7 +53,6 @@ const Projects = () => {
             onClick={() => openModal(project)}
             className="group rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 overflow-hidden shadow-md hover:shadow-xl hover:border-cyan-500/50 transition-all duration-300 cursor-pointer flex flex-col justify-between"
           >
-            {/* Project Image Banner */}
             <div className="relative h-48 w-full bg-slate-900 overflow-hidden">
               <img 
                 src={project.images && project.images[0] ? project.images[0] : ""} 
@@ -66,7 +65,6 @@ const Projects = () => {
               </button>
             </div>
 
-            {/* Card Info */}
             <div className="p-6 flex flex-col flex-grow justify-between">
               <div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors mb-2">
@@ -100,7 +98,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Interactive Modal Gallery */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
@@ -124,7 +121,6 @@ const Projects = () => {
                 <X size={18} />
               </button>
 
-              {/* Image Gallery (Left/Top) */}
               <div className="relative h-64 md:h-auto md:w-3/5 bg-slate-950 flex items-center justify-center overflow-hidden shrink-0 group/gallery">
                 {selectedProject.images && selectedProject.images.length > 0 ? (
                   <>
@@ -165,7 +161,6 @@ const Projects = () => {
                 )}
               </div>
 
-              {/* Details (Right/Bottom) */}
               <div className="p-6 md:p-8 flex flex-col md:w-2/5 overflow-y-auto">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 pr-8">
                   {selectedProject.title}
