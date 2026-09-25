@@ -6,7 +6,6 @@ import cooja from '../assets/cooja.webp';
 // Academic images placeholders (import your assets here later)
 import univTlemcenImg from '../assets/tlemcen.webp';
 import dauphineImg from '../assets/dauphine.webp';
-import supcom from '../assets/supcom.webp';
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
   title: "Software Engineer & AI/Distributed Systems Master's Student",
@@ -91,17 +90,4 @@ export const academicPath = [
     color: "from-cyan-500 to-blue-500",
     status: "Ongoing"
   },
-  {
-    id: 4,
-    degree: "Ph.D. in Computer Science",
-    school: "Sup'Com",
-    location: "Tunis, Tunisia",
-    period: "Ongoing / Current Research",
-    fullName: "Research in AI, IoT & Big Data Analytics",
-    description: "Doctoral research focusing on advanced artificial intelligence, Internet of Things (IoT) architectures, and large-scale big data analytics.",
-    image: supcom,
-    highlights: ["Artificial Intelligence", "Internet of Things", "Big Data Analytics", "Advanced Research"],
-    color: "from-purple-500 to-pink-500",
-    status: "Ongoing"
-  }
 ];

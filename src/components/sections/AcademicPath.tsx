@@ -139,7 +139,6 @@ const AcademicPath = () => {
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold border border-cyan-500/20">
           <Sparkles size={14} />
-          <span>Advancing towards doctoral research and specialized edge AI engineering</span>
         </div>
       </motion.div>
     </section>
