@@ -1,11 +1,17 @@
-// src/data/portfolioData.js
-import chartItImg from '../assets/project2.png';
-import chartItImg2 from '../assets/project22.png';
 import cooja from '../assets/cooja.webp';
-
-// Academic images placeholders (import your assets here later)
 import univTlemcenImg from '../assets/tlemcen.webp';
 import dauphineImg from '../assets/dauphine.webp';
+import c from '../assets/malware-analysis.webp';
+import image from '../assets/image.png';
+import image2 from '../assets/image2.png';
+import image3 from '../assets/image3.png';
+import image4 from '../assets/image4.png';
+import image5 from '../assets/image5.png';
+import image6 from '../assets/image6.png';
+import image7 from '../assets/image7.png';
+import image8 from '../assets/image8.png';
+
+
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
   title: "Software Engineer & AI/Distributed Systems Master's Student",
@@ -28,17 +34,6 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Chart-It",
-    description: "Expense tracking application featuring full-stack architecture with clean UI analytics.",
-    tags: ["React", "Node.js", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript"],
-    github: "https://github.com/anescodes/chart-it",
-    live: "#",
-    images: [
-      chartItImg,
-      chartItImg2
-    ]
-  },
-  {
     title: "Cloud & Fog MA ABE System",
     description: "Master 2 research project focusing on Multi-Authority Attribute-Based Encryption for distributed cloud/fog setups.",
     tags: ["Distributed Systems", "Cryptography", "Cloud", "Fog Computing"],
@@ -46,6 +41,33 @@ export const projects = [
     live: "#",
     images: [
       cooja
+    ]
+  },
+  {
+    title: "Chart-It",
+    description: "Expense tracking application featuring full-stack architecture with clean UI analytics.",
+    tags: ["React", "Node.js", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript"],
+    github: "https://github.com/anescodes/chart-it",
+    live: "#",
+    images: [
+      image,
+      image2,
+      image3,
+      image4,
+      image5,
+      image6,
+      image7,
+      image8
+    ]
+  },
+    {
+    title: "Distributed Networked Key-Value Store & Security Lab",
+    description: "A C-based distributed key-value store designed to study data distribution, network communication between nodes, distributed algorithms, and the security of low-level networked software through vulnerability analysis and reverse engineering..",
+    tags: ["Distributed Systems", "TCP/IP", "Concurrency", "Secure Coding","Cybersecurity","Reverse Engineering","Vulnerability Analysis"],
+    github: "https://github.com/anescodes/distributed-kv-store",
+    live: "#",
+    images: [
+      c
     ]
   },
 ];
