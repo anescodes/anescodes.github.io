@@ -1,90 +1,117 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Terminal, Cpu } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
-import profileImg from '../../assets/profile.jpg';
-import { useTheme } from '../../context/ThemeContext';
 
 const Hero = () => {
-    const { theme } = useTheme();
+  return (
+    <section id="hero" className="relative min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto flex items-center">
+      <div className="grid md:grid-cols-12 gap-12 items-center w-full z-10">
+        
+        {/* Left Column: Metadata & Typography */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="md:col-span-7 space-y-6"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-surface border border-border text-xs font-mono text-accent shadow-sm">
+            <Terminal size={13} />
+            <span>AI SYSTEMS & DISTRIBUTED ARCHITECTURE</span>
+          </div>
 
-    return (
-        <section id="hero" className="min-h-[88vh] flex items-center justify-center px-6 relative overflow-hidden py-12 transition-colors duration-500">
-            
-            <motion.div
-                animate={{
-                    scale: [1, 1.25, 1],
-                    opacity: theme === 'dark' ? [0.2, 0.4, 0.2] : [0.4, 0.6, 0.4],
-                    rotate: [0, 90, 0],
-                }}
-                transition={{
-                    duration: 12,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full blur-[140px] pointer-events-none transition-all duration-700 ${
-                    theme === 'dark' 
-                    ? 'bg-gradient-to-br from-cyan-600/30 via-blue-900/30 to-teal-500/20' 
-                    : 'bg-gradient-to-br from-cyan-300/70 via-sky-200/60 to-blue-300/50'
-                }`}
-            />
+          <div className="space-y-2">
+            <p className="text-xs font-mono tracking-widest text-text-muted uppercase">
+              // Portfolio & Research Profile
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-text">
+              {personalInfo.name}
+            </h1>
+            <p className="text-lg md:text-xl font-medium text-accent">
+              {personalInfo.title}
+            </p>
+          </div>
 
-            <div className={`absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none ${
-                theme === 'dark' ? 'opacity-30' : 'opacity-40'
-            }`} />
+          <p className="text-text-muted text-base leading-relaxed max-w-xl">
+            {personalInfo.bio || 
+              "Designing rigorous full-stack applications, intelligent edge agents, and distributed cryptographic architectures with mathematical precision."
+            }
+          </p>
 
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight mb-4 transition-colors">
-                        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-teal-400 dark:from-cyan-400 dark:via-teal-300 dark:to-blue-500">{personalInfo.name}</span>
-                    </h1>
-                    <p className="text-lg text-slate-700 dark:text-slate-300 font-medium mb-4 transition-colors">
-                        {personalInfo.title}
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 transition-colors">
-                        {personalInfo.bio}
-                    </p>
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 bg-accent hover:bg-accent-hover text-on-accent text-sm font-medium rounded-sm shadow-sm inline-flex items-center gap-2 transition-all"
+            >
+              Explore Systems
+              <ArrowRight size={16} />
+            </motion.a>
 
-                    <div className="flex flex-wrap items-center gap-4">
-                        <a href="#projects" className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white dark:text-slate-950 font-semibold px-6 py-3 rounded-lg transition-all text-sm shadow-lg shadow-cyan-500/20 hover:scale-105 active:scale-95">
-                            View Projects <ArrowRight size={16} />
-                        </a>
-                        <a href="#contact" className="flex items-center gap-2 border border-slate-300 dark:border-slate-700 hover:border-cyan-500/50 text-slate-800 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 px-6 py-3 rounded-lg transition-all text-sm bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm hover:scale-105 active:scale-95 shadow-sm">
-                            Contact Me
-                        </a>
-                    </div>
-                </motion.div>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 bg-surface hover:bg-surface-muted text-text border border-border text-sm font-medium rounded-sm transition-all"
+            >
+              Initiate Contact
+            </motion.a>
+          </div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex justify-center"
-                >
-                    <motion.div
-                        animate={{ y: [0, -12, 0] }}
-                        transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                        className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl p-1 bg-gradient-to-tr from-cyan-400 via-teal-400 to-blue-600 shadow-2xl shadow-cyan-500/20 group"
-                    >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
-
-                        <div className="w-full h-full bg-slate-100 dark:bg-slate-950 rounded-[14px] overflow-hidden flex items-center justify-center relative z-10 transition-colors">
-                            <img
-                                src={profileImg}
-                                alt={personalInfo.name}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-950/80 via-transparent to-transparent opacity-60" />
-                        </div>
-                    </motion.div>
-                </motion.div>
+          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-border font-mono text-xs text-text-muted">
+            <div>
+              <span className="block text-text font-bold text-sm">M1 AIDA</span>
+              Paris Dauphine-PSL
             </div>
-        </section>
-    );
+            <div>
+              <span className="block text-text font-bold text-sm">Full-Stack</span>
+              MERN / PERN / Python
+            </div>
+            <div>
+              <span className="block text-text font-bold text-sm">Focus</span>
+              Edge AI & Systems
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Clean Profile Photo Card (Without Outside Frames) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="md:col-span-5 flex justify-center"
+        >
+          <div className="relative w-full max-w-sm bg-surface border border-border p-3 shadow-sm rounded-sm">
+            <div className="absolute top-2 left-2 z-10 px-2 py-0.5 bg-surface border border-border font-mono text-[9px] text-accent">
+              REF_IMG_01 // 
+            </div>
+            
+            <div className="w-full aspect-[4/5] bg-surface-muted overflow-hidden relative rounded-xs border border-border/60">
+              {personalInfo.image ? (
+                <img 
+                  src={personalInfo.image} 
+                  alt={personalInfo.name} 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center text-text-muted font-mono text-xs">
+                  <Cpu size={36} className="mb-2 text-accent" />
+                  <span>[ PORTRAIT MATRIX ]</span>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-3 pt-2 border-t border-border flex justify-between items-center text-[10px] font-mono text-text-muted">
+              <span>COORDS: 36.8065° N, 10.1815° E</span>
+              <span className="text-accent">● ACTIVE</span>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

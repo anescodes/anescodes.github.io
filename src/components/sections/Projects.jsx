@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, X, Maximize2, Terminal } from 'lucide-react';
 import { projects } from '../../data/portfolioData';
 
 const Projects = () => {
@@ -18,192 +18,212 @@ const Projects = () => {
 
   const nextImage = (e) => {
     e.stopPropagation();
-    if (selectedProject) {
+    if (selectedProject && selectedProject.images) {
       setCurrentImgIndex((prev) => (prev + 1) % selectedProject.images.length);
     }
   };
 
   const prevImage = (e) => {
     e.stopPropagation();
-    if (selectedProject) {
+    if (selectedProject && selectedProject.images) {
       setCurrentImgIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
     }
   };
 
   return (
-    <section id="projects" className="py-20 px-6 max-w-6xl mx-auto">
-      <motion.div 
+    <section id="projects" className="py-24 px-6 max-w-6xl mx-auto border-t border-border">
+      {/* Section Header */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
       >
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">Featured Projects</h2>
-        <p className="text-slate-600 dark:text-slate-400 text-sm">Explore my full-stack applications and system architectures</p>
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-surface border border-border text-xs font-mono text-accent mb-3 shadow-sm">
+            <Terminal size={13} />
+            <span>SYSTEM_MODULES // PORTFOLIO</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-text tracking-tight">
+            Engineered Projects
+          </h2>
+        </div>
+        <p className="text-text-muted text-sm max-w-md font-mono">
+          // Full-stack systems, distributed microservices, and cryptographic access control implementations.
+        </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Projects Grid */}
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project, idx) => (
           <motion.div
-            key={idx}
+            key={project.id || idx}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
+            whileHover={{ y: -4 }}
+            className="group bg-surface border border-border hover:border-accent/40 rounded-sm p-6 shadow-sm transition-all flex flex-col justify-between cursor-pointer"
             onClick={() => openModal(project)}
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 overflow-hidden shadow-md hover:shadow-xl hover:border-cyan-500/50 transition-all duration-300 cursor-pointer flex flex-col justify-between"
           >
-            <div className="relative h-48 w-full bg-slate-900 overflow-hidden">
-              <img 
-                src={project.images && project.images[0] ? project.images[0] : ""} 
-                alt={project.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors" />
-              <button className="absolute top-3 right-3 p-2 rounded-lg bg-slate-900/60 text-white opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
-                <Maximize2 size={16} />
-              </button>
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6 line-clamp-3">
-                  {project.description}
-                </p>
+            <div>
+              {/* Top Meta Bar */}
+              <div className="flex items-center justify-between mb-4 font-mono text-xs text-text-muted">
+                <span className="text-accent">MOD_0{idx + 1}</span>
+                <span>{project.category || 'System Architecture'}</span>
               </div>
 
-              <div>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.tags.map((tag, tIdx) => (
-                    <span 
-                      key={tIdx} 
-                      className="text-[10px] font-medium px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20"
-                    >
-                      {tag}
+              {/* Thumbnail / Image Preview */}
+              {project.images && project.images.length > 0 && (
+                <div className="relative w-full h-48 bg-surface-muted border border-border rounded-xs overflow-hidden mb-5">
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125 group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="px-3 py-1 bg-surface border border-border text-xs font-mono text-text shadow-sm flex items-center gap-1.5">
+                      <Maximize2 size={12} className="text-accent" /> Inspect Module
                     </span>
-                  ))}
+                  </div>
                 </div>
+              )}
 
-                <div className="flex items-center gap-4 text-xs font-semibold pt-4 border-t border-slate-200 dark:border-slate-800/60">
-                  <span className="text-slate-700 dark:text-slate-300 hover:text-cyan-500 transition-colors flex items-center gap-1">
-                    Click for Details & Screenshots →
+              <h3 className="text-xl font-bold text-text group-hover:text-accent transition-colors mb-2">
+                {project.title}
+              </h3>
+
+              <p className="text-text-muted text-sm leading-relaxed mb-6">
+                {project.description}
+              </p>
+            </div>
+
+            <div>
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2 mb-6 pt-4 border-t border-border/60">
+                {project.technologies && project.technologies.map((tech, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="text-[11px] font-mono px-2.5 py-1 bg-surface-muted text-text-muted border border-border rounded-xs"
+                  >
+                    {tech}
                   </span>
-                </div>
+                ))}
+              </div>
+
+              {/* Action Links */}
+              <div className="flex items-center justify-between text-xs font-mono">
+                <span className="text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  View Specification →
+                </span>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-text-muted hover:text-accent flex items-center gap-1"
+                  >
+                    Source <ExternalLink size={12} />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
         ))}
       </div>
 
+      {/* Project Detail Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
-          >
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]"
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-surface border border-border rounded-sm max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 shadow-xl relative"
             >
-              <button 
-                onClick={closeModal} 
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-900/60 text-white hover:bg-slate-900 transition-colors"
+              <button
+                onClick={closeModal}
+                className="absolute top-6 right-6 p-2 rounded-xs bg-surface-muted border border-border text-text-muted hover:text-accent transition-colors"
               >
                 <X size={18} />
               </button>
 
-              <div className="relative h-64 md:h-auto md:w-3/5 bg-slate-950 flex items-center justify-center overflow-hidden shrink-0 group/gallery">
-                {selectedProject.images && selectedProject.images.length > 0 ? (
-                  <>
-                    <img 
-                      src={selectedProject.images[currentImgIndex]} 
-                      alt={selectedProject.title} 
-                      className="w-full h-full object-contain"
-                    />
+              <div className="font-mono text-xs text-accent mb-1">// PROJECT SPECIFICATION</div>
+              <h3 className="text-2xl font-bold text-text mb-4">{selectedProject.title}</h3>
 
-                    {selectedProject.images.length > 1 && (
-                      <>
-                        <button 
-                          onClick={prevImage}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/60 text-white hover:bg-cyan-500 transition-colors"
-                        >
-                          <ChevronLeft size={20} />
-                        </button>
-                        <button 
-                          onClick={nextImage}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/60 text-white hover:bg-cyan-500 transition-colors"
-                        >
-                          <ChevronRight size={20} />
-                        </button>
-                        
-                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-slate-900/40 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                          {selectedProject.images.map((_, i) => (
-                            <span 
-                              key={i} 
-                              className={`h-1.5 rounded-full transition-all ${i === currentImgIndex ? 'bg-cyan-400 w-4' : 'bg-white/50 w-1.5'}`} 
-                            />
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <div className="text-slate-400 text-sm">No preview images available</div>
-                )}
-              </div>
+              {/* Image Carousel */}
+              {selectedProject.images && selectedProject.images.length > 0 && (
+                <div className="relative w-full h-64 md:h-80 bg-surface-muted border border-border rounded-xs overflow-hidden mb-6">
+                  <img
+                    src={selectedProject.images[currentImgIndex]}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
 
-              <div className="p-6 md:p-8 flex flex-col md:w-2/5 overflow-y-auto">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 pr-8">
-                  {selectedProject.title}
-                </h3>
-                
-                <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
-                  {selectedProject.description}
-                </p>
-                
-                <div className="mb-6">
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wider">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tags.map((t, idx) => (
-                      <span key={idx} className="text-[10px] px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-700">
-                        {t}
-                      </span>
-                    ))}
+                  {selectedProject.images.length > 1 && (
+                    <div className="absolute inset-0 flex items-center justify-between p-4">
+                      <button
+                        onClick={prevImage}
+                        className="p-2 bg-surface/90 border border-border text-text hover:text-accent rounded-xs shadow-sm"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="p-2 bg-surface/90 border border-border text-text hover:text-accent rounded-xs shadow-sm"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                    </div>
+                  )}
+
+                  <div className="absolute bottom-3 right-3 px-2 py-1 bg-surface/90 border border-border text-[10px] font-mono text-text">
+                    IMG {currentImgIndex + 1} / {selectedProject.images.length}
                   </div>
                 </div>
+              )}
 
-                <div className="flex gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-                  <a 
-                    href={selectedProject.github} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-4 py-2.5 rounded-lg text-xs font-semibold hover:opacity-90 transition-opacity"
-                  >
-                    View Code
-                  </a>
-                  {selectedProject.live && selectedProject.live !== "#" && (
-                     <a 
-                     href={selectedProject.live} 
-                     target="_blank" 
-                     rel="noreferrer"
-                     className="flex-1 flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg text-xs font-semibold hover:border-cyan-500 hover:text-cyan-500 transition-colors"
-                   >
-                     <ExternalLink size={14} /> Live Demo
-                   </a>
-                  )}
+              <p className="text-text-muted text-sm leading-relaxed mb-6">
+                {selectedProject.description}
+              </p>
+
+              <div className="mb-6">
+                <h4 className="text-xs font-mono font-bold text-text uppercase tracking-wider mb-3">Technologies Used</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies && selectedProject.technologies.map((tech, tIdx) => (
+                    <span key={tIdx} className="text-xs font-mono px-3 py-1 bg-accent-soft text-accent border border-accent/20 rounded-xs">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
+
+              <div className="flex gap-4 pt-4 border-t border-border">
+                {selectedProject.github && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-5 py-2.5 bg-surface hover:bg-surface-muted border border-border text-text text-xs font-mono rounded-xs inline-flex items-center gap-2 transition-all"
+                  >
+                    View Source Code <ExternalLink size={14} />
+                  </a>
+                )}
+                {selectedProject.link && (
+                  <a
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-5 py-2.5 bg-accent hover:bg-accent-hover text-on-accent text-xs font-mono rounded-xs inline-flex items-center gap-2 transition-all shadow-sm"
+                  >
+                    Live Deployment <ExternalLink size={14} />
+                  </a>
+                )}
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>

@@ -10,10 +10,11 @@ import image5 from '../assets/image5.png';
 import image6 from '../assets/image6.png';
 import image7 from '../assets/image7.png';
 import image8 from '../assets/image8.png';
-
+import profile from "../assets/profile.jpg";
 
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
+  image:profile,
   title: "Software Engineer & AI/Distributed Systems Master's Student",
   bio: "Specializing in Networks, Distributed Systems, and Web Development. Passionate about building scalable applications and agentic AI systems.",
   email: "anes.abdelmounaim.touati@gmail.com",

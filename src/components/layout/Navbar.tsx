@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
 
 const Navbar = () => {
@@ -17,13 +17,14 @@ const Navbar = () => {
 
   const navLinks = [
     { label: 'Home', href: '#hero' },
+    { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Academic', href: '#academic' },
-    { label: 'Certifications', href: '#certifications' },
+    { label: 'Research & Skills', href: '#research' },
     { label: 'Contact', href: '#contact' },
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href:any) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
     setIsOpen(false);
@@ -31,73 +32,74 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-surface/90 backdrop-blur-md border-b border-border shadow-sm'
+          : 'bg-canvas/80 backdrop-blur-xs border-b border-border/40'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <motion.button
-            onClick={() => scrollToSection('#hero')}
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 cursor-pointer"
-          >
-            {personalInfo?.name ? personalInfo.name.split(' ')[0] : 'Portfolio'}
-          </motion.button>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        
+        {/* Logo / Identifier */}
+        <motion.button
+          onClick={() => scrollToSection('#hero')}
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center gap-2 font-mono text-sm font-bold text-text tracking-tight cursor-pointer"
+        >
+          <Terminal size={16} className="text-accent" />
+          <span>{personalInfo?.name ? personalInfo.name.split(' ')[0].toUpperCase() : 'PORTFOLIO'}.SYS</span>
+        </motion.button>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <motion.button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                whileHover={{ y: -2 }}
-                className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors relative group"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 group-hover:w-full transition-all duration-300" />
-              </motion.button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8 font-mono text-xs">
+          {navLinks.map((link) => (
             <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              whileTap={{ scale: 0.9 }}
-              className="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+              key={link.href}
+              onClick={() => scrollToSection(link.href)}
+              whileHover={{ y: -1 }}
+              className="text-text-muted hover:text-accent transition-colors relative group py-1"
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {link.label}
+              <span className="absolute left-0 bottom-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
             </motion.button>
-          </div>
+          ))}
         </div>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-800"
-            >
-              <div className="flex flex-col gap-3">
-                {navLinks.map((link) => (
-                  <motion.button
-                    key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    whileHover={{ x: 4 }}
-                    className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 text-left transition-colors py-2"
-                  >
-                    {link.label}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Mobile Toggle Button */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+          className="md:hidden p-2 rounded-xs bg-surface border border-border text-text-muted hover:text-accent transition-colors"
+        >
+          {isOpen ? <X size={18} /> : <Menu size={18} />}
+        </motion.button>
       </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-surface border-b border-border px-6 py-4"
+          >
+            <div className="flex flex-col gap-3 font-mono text-xs">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-text-muted hover:text-accent text-left py-2 transition-colors border-b border-border/40 last:border-none"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
