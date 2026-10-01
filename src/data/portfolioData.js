@@ -14,25 +14,36 @@ import profile from "../assets/profile.jpg";
 
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
-  image:profile,
-  title: "Software Engineer & AI/Distributed Systems Master's Student",
-  bio: "Specializing in Networks, Distributed Systems, and Web Development. Passionate about building scalable applications and agentic AI systems.",
+  shortName: "Anes Touati",
+  image: profile,
+  title: "AI & Data Science Engineer",
+  tagline: "Artificial Intelligence · Data Science · Mathematics",
+  bio: "I'm passionate about AI, data science, and the mathematics behind them. I enjoy turning data into insights and building intelligent systems.",
+  bioSecondary:
+    "My background combines computer science, mathematics, algorithms, and software engineering, with a strong focus on machine learning and data analysis.",
   email: "anes.abdelmounaim.touati@gmail.com",
   github: "https://github.com/anescodes",
-  linkedin:"https://www.linkedin.com/in/anes-abdelmounaim-touati-3048b3412/",
+  linkedin: "https://www.linkedin.com/in/anes-abdelmounaim-touati-3048b3412/",
   location: "Tunis / Algeria",
+  cv: "/cv.pdf",
 };
-
 export const skills = [
-  { name: "React / Frontend", level: "Average", category: "Web" },
-  { name: "Node.js / Express", level: "Average", category: "Web" },
-  { name: "TypeScript & Tailwind CSS", level: "Proficient", category: "Web" },
-  { name: "PostgreSQL & Drizzle ORM", level: "Proficient", category: "Database" },
-  { name: "Java & OOP", level: "Solid Foundation", category: "Core" },
-  { name: "Distributed Systems & Cloud", level: "Solid Foundation", category: "Core" },
-  { name: "Algorithms & Data Structures", level: "Solid Foundation", category: "Core" },
+  {
+    name: "C",
+    level: "Solid Foundation",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+  },
+  {
+    name: "Java",
+    level: "Solid Foundation",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "Python",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
 ];
-
 export const projects = [
   {
     title: "Cloud & Fog MA ABE System",
