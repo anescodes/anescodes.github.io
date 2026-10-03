@@ -11,7 +11,7 @@ import image6 from '../assets/image6.png';
 import image7 from '../assets/image7.png';
 import image8 from '../assets/image8.png';
 import profile from "../assets/profile.jpg";
-
+import cv from "../assets/Anes_Touati_CV.pdf"
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
   shortName: "Anes Touati",
@@ -25,23 +25,58 @@ export const personalInfo = {
   github: "https://github.com/anescodes",
   linkedin: "https://www.linkedin.com/in/anes-abdelmounaim-touati-3048b3412/",
   location: "Tunis / Algeria",
-  cv: "/cv.pdf",
+  cv: cv,
 };
 export const skills = [
-  {
-    name: "C",
-    level: "Solid Foundation",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-  },
-  {
-    name: "Java",
-    level: "Solid Foundation",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-  },
   {
     name: "Python",
     level: "Proficient",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    name: "Java",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "C",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+  },
+  {
+    name: "JavaScript",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "TypeScript",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    name: "PostgreSQL",
+    level: "Proficient",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "React",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Node.js",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Pentesting",
+    level: "Beginner",
+    logo: "https://cdn.simpleicons.org/kalilinux/557C94",
+  },
+  {
+    name: "Data Science",
+    level: "Beginner",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
   },
 ];
 export const projects = [
