@@ -69,6 +69,16 @@ export const skills = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   },
   {
+    name: "Git",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    name: "GitHub",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
+  {
     name: "Pentesting",
     level: "Beginner",
     logo: "https://cdn.simpleicons.org/kalilinux/557C94",
