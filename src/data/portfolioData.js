@@ -35,12 +35,12 @@ export const skills = [
   },
   {
     name: "Java",
-    level: "Solid Foundation",
+    level: "Proficient",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
   },
   {
     name: "C",
-    level: "Solid Foundation",
+    level: "Proficient",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
   },
   {
@@ -57,6 +57,26 @@ export const skills = [
     name: "PostgreSQL",
     level: "Proficient",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "React",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Node.js",
+    level: "Average",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Pentesting",
+    level: "Beginner",
+    logo: "https://cdn.simpleicons.org/kalilinux/557C94",
+  },
+  {
+    name: "Data Science",
+    level: "Beginner",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
   },
 ];
 export const projects = [

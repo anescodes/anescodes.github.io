@@ -54,13 +54,7 @@ const AcademicPath = () => {
           </div>
 
           {/* Scroll Arrow */}
-          <button
-            onClick={scrollRight}
-            className="hidden h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-xl text-gray-700 shadow-sm transition hover:border-orange-400 hover:bg-orange-500 hover:text-white md:flex"
-            aria-label="Scroll academic path"
-          >
-            →
-          </button>
+        
         </div>
 
         {/* Horizontal Scroll Container (scrollbar hidden) */}
