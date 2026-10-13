@@ -1,11 +1,12 @@
-import { useState } from "react";
 
-const Navbar = () => {
+import { useState } from "react";
+ const Navbar = () => {
   const [active, setActive] = useState("home");
 
   const links = [
     { id: "home", label: "Home" },
     { id: "academic", label: "Academic Career" },
+    { id: "research", label: "Research" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
@@ -14,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
-        
+
         {/* Logo */}
         <a
           href="#home"
