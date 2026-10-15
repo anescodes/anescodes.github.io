@@ -11,6 +11,7 @@ import image6 from '../assets/image6.png';
 import image7 from '../assets/image7.png';
 import image8 from '../assets/image8.png';
 import profile from "../assets/profile.jpg";
+import spam_image from "../assets/spam_image.webp";
 import cv from "../assets/Anes_Touati_CV.pdf"
 export const personalInfo = {
   name: "Anes Abdelmounaim Touati",
@@ -127,6 +128,17 @@ export const projects = [
       c
     ]
   },
+  {
+  title: "Email Spam Detector",
+  description:
+    "A Machine Learning application that analyzes email content and classifies messages as spam or legitimate. Uses text preprocessing, TF-IDF feature extraction, and classification algorithms to identify unwanted messages and evaluate model performance.",
+  tags: ["Machine Learning", "Python", "Scikit-Learn", "Java", "Spring Boot", "React", "AI"],
+  github: "https://github.com/anescodes/email-spam-detector",
+  live: "#",
+  images: [
+    spam_image
+  ]
+},
 ];
 
 export const academicPath = [
