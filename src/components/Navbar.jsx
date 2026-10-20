@@ -1,12 +1,13 @@
 
 import { useState } from "react";
- const Navbar = () => {
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
   const [active, setActive] = useState("home");
 
   const links = [
     { id: "home", label: "Home" },
     { id: "academic", label: "Academic Career" },
-    { id: "research", label: "Research" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
@@ -16,16 +17,30 @@ import { useState } from "react";
     <nav className="w-full border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
 
-        {/* Logo */}
-        <a
-          href="#home"
-          onClick={() => setActive("home")}
-          className="text-lg font-bold tracking-tight text-gray-900"
-        >
-          Anes.
-        </a>
+        {/* Left: Lab buttons */}
+        <div className="flex items-center gap-2">
+          <Link
+            to="/learning"
+            className="group inline-flex items-center gap-1.5 rounded-md border border-gray-200 px-3 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+          >
+            Learning Lab
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              ↗
+            </span>
+          </Link>
 
-        {/* Navigation */}
+          <Link
+            to="/research-lab"
+            className="group inline-flex items-center gap-1.5 rounded-md border border-gray-200 px-3 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-700 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+          >
+            Research Lab
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              ↗
+            </span>
+          </Link>
+        </div>
+
+        {/* Right: Existing portfolio navigation */}
         <div className="flex items-center gap-1">
           {links.map((link) => (
             <a
