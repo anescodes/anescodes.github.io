@@ -1,21 +1,41 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import AcademicPath from './components/AcademicPath';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Research from './components/Research';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+// Main portfolio
+import Portfolio from "./pages/Portfolio";
+
+// Learning Lab
+import LearningLab from "./pages/LearningLab";
+import Lesson from "./pages/Lesson";
+
+// Research Lab
+import ResearchLab from "./pages/ResearchLab";
+
 function App() {
   return (
-    <div className="">
-      <Navbar />
-      <Hero/>
-      <AcademicPath/>
-      <Research />
-      <Projects/>
-      <Skills/>
-      <Contact/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Existing portfolio */}
+        <Route path="/" element={<Portfolio />} />
+
+        {/* Green Learning Lab */}
+        <Route path="/learning" element={<LearningLab />} />
+        
+        {/* Fixed: Added /lesson/ so it matches /learning/lesson/:lessonId */}
+        <Route
+          path="/learning/lesson/:lessonId"
+          element={<Lesson />}
+        />
+
+        {/* Academic Research Lab */}
+        <Route
+          path="/research-lab"
+          element={<ResearchLab />}
+        />
+
+        {/* Redirect unknown URLs to the portfolio */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
